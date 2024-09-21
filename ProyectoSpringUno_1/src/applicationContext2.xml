@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+">
+
+
+
+	<bean id="miInforme" class="es.pildoras.IoC.Informe_7"></bean>
+
+
+	<!-- Para el modelo Singleton (verUsoDemoSingletonPrototype_8.java)
+	el scope no hace falta ponerlo porque por defecto es singleton, pero 
+	lo ponemos para mayopr claridad. -->
+	<!-- 
+	<bean id="miSecretarioEmpleado"
+		class="es.pildoras.IoC.SecretarioEmpleado_4" scope="singleton">
+		<property name="informeNuevo" ref="miInforme"></property>
+	</bean>
+	-->
+	
+	<!-- Para el modelo Prototype (verUsoDemoSingletonPrototype_8.java) -->
+	<bean id="miSecretarioEmpleado"
+		class="es.pildoras.IoC.SecretarioEmpleado_4" scope="prototype">
+		<property name="informeNuevo" ref="miInforme"></property>
+	</bean>
+
+</beans>
