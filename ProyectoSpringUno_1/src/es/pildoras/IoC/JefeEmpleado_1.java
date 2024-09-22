@@ -4,7 +4,7 @@ public class JefeEmpleado_1 implements Empleados_3 {
 
 	// 2. Creacion del contructor para la inyeccion de DEPENDENCIAS (ver 5 y 6)
 	private CreacionInformes_6 informeNuevo;
-
+ 
 	public JefeEmpleado_1(CreacionInformes_6 informeNuevo) {
 		this.informeNuevo = informeNuevo;
 	}

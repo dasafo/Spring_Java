@@ -12,7 +12,9 @@
 	<!-- Cargar archivo externo datosEmpresa.propiedades para inyectar atributos 
 		o campos (otra forma es el punto 3 de abajo) -->
 	<context:property-placeholder location="classpath:datosEmpresa.propiedades" />
+
 	<bean id="miInforme2" class="es.pildoras.IoC.Informe_7"></bean>
+
 	<bean id="miDirectorEmpleado" class="es.pildoras.IoC.DirectorEmpleado_5">
 		<constructor-arg ref="miInforme2"></constructor-arg>
 		<!-- PAra hacer inyecciones de campos/atributos. El name de property tiene 
@@ -30,7 +32,9 @@
 
 	<!-- ______3.1 Bean con contructores_______ -->
 	<bean id="miJefeEmpleado" class="es.pildoras.IoC.JefeEmpleado_1">
+    <!-- Hacemos referecnai al bean de arriba miInforme -->
 		<constructor-arg ref="miInforme"></constructor-arg>
+
 		<!-- PAra hacer inyecciones de campos/atributos. El name de property tiene 
 			que ser el mismo que el del setter creado pero sin 'set' y la primera palabra 
 			en minuscula -->
@@ -41,11 +45,11 @@
 
 
 	<!-- ________3.2 Bean con SETTER________ -->
-	<bean id="miSecretarioEmpleado"
-		class="es.pildoras.IoC.SecretarioEmpleado_4">
+	<bean id="miSecretarioEmpleado" class="es.pildoras.IoC.SecretarioEmpleado_4">
 
 		<!-- Inyecciones de dependencias.El name de property tiene que ser el mismo 
 			que el del setter creado pero sin 'set' y la primera palabra en minuscula -->
+    <!-- Hacemos referecnai al bean de arriba miInforme -->
 		<property name="informeNuevo" ref="miInforme"></property>
 
 		<!-- PAra hacer inyecciones de campos/atributos. El name de property tiene 

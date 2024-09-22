@@ -3,6 +3,7 @@ package es.pildoras.IoC;
 public class SecretarioEmpleado_4 implements Empleados_3 {
 	
 	// 2. Creacion de SETTER para la inyeccion de DEPENDENCIAS (ver 5 y 6)
+  // Aqui usamos un setter en vez de un constructor como hemos hecho antes
 	private CreacionInformes_6 informeNuevo;
 
 	public void setInformeNuevo(CreacionInformes_6 informeNuevo) {
