@@ -13,8 +13,12 @@
 		o campos (otra forma es el punto 3 de abajo) -->
 	<context:property-placeholder location="classpath:datosEmpresa.propiedades" />
 	
-	<bean id="miInforme2" class="es.pildoras.IoC.Informe_7"></bean>
-	
+  <bean id="miInforme2" class="es.pildoras.IoC.Informe_7"></bean>
+
+	<!--Vamos a indicarle a este bean que tiene que llevar tareas iniciales
+   y tareas finales (ver Ciclo de Vida y DirectorEmpleado_5 junto archivo
+   UsoCicloVidaBean_9)-->
+  <!-- Le damos los nombres de los metodos creados en DirectorEmpleado_5-->
 	<bean id="miDirectorEmpleado" class="es.pildoras.IoC.DirectorEmpleado_5"
 	init-method="metodoInicial"
 	destroy-method="metodoFinal">

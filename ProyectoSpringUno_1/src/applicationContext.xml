@@ -17,12 +17,20 @@
 
 	<bean id="miDirectorEmpleado" class="es.pildoras.IoC.DirectorEmpleado_5">
 		<constructor-arg ref="miInforme2"></constructor-arg>
+
 		<!-- PAra hacer inyecciones de campos/atributos. El name de property tiene 
 			que ser el mismo que el del setter creado pero sin 'set' y la primera palabra 
 			en minuscula y el valor el nombre dado en el archivo externo a esas variables-->
+    <!-- En este caso pilla la info del archivo externo datosEmpresa.propiedades 
+    indicado arriba en el context. Justo debajo un ejemplo directo sin usar
+    dicho archivo.-->
 		<property name="email" value="${email}"></property>
 		<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
-	</bean>
+    <!--
+    <property name="email" value="director@pildorasinformaticas.com"></property>
+		<property name="nombreEmpresa" value="Pildoras Informaticas"></property>
+    -->
+  </bean>
 
 
 	<!-- 3. Configuramos la dependencia en XML para la inyeccion de dependencias 

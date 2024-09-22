@@ -44,7 +44,11 @@ public class DirectorEmpleado_5 implements Empleados_3 {
 		return "Informe creado por el Director: " + informeNuevo.getInforme();
 	}
 
-	// -------------------------Ciclo de Vida (ver UsoCicloVidaBean_9)-----------------------------------
+
+
+  // -----------------------------------------------------------------------------
+	// -------------- Ciclo de Vida (ver UsoCicloVidaBean_9) -----------------------
+  // -------------------------------------------------------------------------------
 
 	// Metodo init. Ejecutar tareas antes de que el Bean este disponible
 	public void metodoInicial() {

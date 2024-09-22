@@ -27,12 +27,17 @@ public class UsoEmpleados_2 {
 		ClassPathXmlApplicationContext contexto = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		// 2. Pedir el Bean al xml
+    // Ejemplo para un Constructor que hemos llamado en el bean del xml miJefeEmpleado
 		Empleados_3 Juan = contexto.getBean("miJefeEmpleado", Empleados_3.class);
+    // Ejemplo para un setter que hemos llamado en el bean del xml miSecretarioEmpleado
 		Empleados_3 Maria = contexto.getBean("miSecretarioEmpleado", Empleados_3.class);
 		
+
+    // Ejemplo para inyecciones desde campos
 		SecretarioEmpleado_4 David = contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado_4.class);
 		DirectorEmpleado_5 Paula = contexto.getBean("miDirectorEmpleado", DirectorEmpleado_5.class);
 		JefeEmpleado_1 Rosa = contexto.getBean("miJefeEmpleado", JefeEmpleado_1.class);
+
 
 		// 3. Utilizar el Bean
 		System.out.println("-Inyección de dependencias con constructor:");
