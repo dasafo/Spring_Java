@@ -16,7 +16,7 @@
 
 	<mvc:annotation-driven/>
 
-	<!-- Configuracion del view resolver-->
+	<!-- Configuracion del view resolver, asi encuentra las vistas de jsp-->
   
   <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,16 +25,16 @@
 	</bean>
 
 	<!-- Indicamos donde se encuentran la carpeta de recursos externos -->
-  <!--
+  
   <mvc:resources location="/recursos/" mapping="/recursos/**"></mvc:resources>
-	-->
+	
 	<!-- Indicamos donde se encuentra el archivo para los mensajes de errores no declarados -->
-  <!--
+  
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 	<property name="basenames" value="resources/messages"></property>
 	
 	</bean>
-  -->
+
 </beans>
 
 

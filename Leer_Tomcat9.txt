@@ -1,0 +1,84 @@
+
+Si no te acuerdas de como va esta movida, pasa abajo a donde pone Consideraciones!! :)
+
+**** Apagar y encender Tomcat9 ****
+**********************************
+sudo /opt/tomcat9/bin/shutdown.sh
+sudo /opt/tomcat9/bin/startup.sh
+
+***** comando de Maven para desplegar tu aplicación ****
+*********************************************************
+mvn tomcat7:deploy
+
+***** URL donde has desplegado tu aplicación (ejemplo de carpeta) ******
+************************************************************************
+http://localhost:8080/Spring_MVC_3
+
+**** Si haces cambios en tu código y quieres actualizar la aplicación 
+sin necesidad de detener y reiniciar Tomcat, puedes usar: ****
+*********************************************************************
+mvn tomcat7:redeploy
+
+**** Para detener la aplicación: Si deseas detener la aplicación desde Maven, puedes usar: ****
+***********************************************************************************************
+mvn tomcat7:undeploy
+
+**** Ver los logs en tiempo real para identificar cualquier posible error o advertencia en Tomcat ****
+******************************************************************************************************
+sudo tail -f /opt/tomcat9/logs/catalina.out
+
+
+------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------- Consideraciones!!!! -------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+Al hacer:
+'mvn clear install' 
+(se crea un .war en la carpeta '/target' de nuestro proyecto que luego tenemos
+que copiar a la carpeta de Tomcat9 para q sea ejecutado desde alli con:
+sudo cp target/Spring_MVC_3.war /opt/tomcat9/webapps/
+despues teniamos q apagar y encender Tomcat9 como indicamos arriba del todo.
+
+Por ello si queriamos evitar esto de copiar y pegar siempre ese .war hacemos lo siguiente:
+
+1 - Primero modificamos el archivo '/opt/Tomcat9/conf/tomcat-users.xml' y añadimos:
+
+<role rolename="manager-gui"/>
+    <role rolename="manager-script"/>
+    <role rolename="manager-status"/>
+    <role rolename="manager-jmx"/>
+    <user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
+
+2 - Despues nos vamos a nuestro proyecto y en el archivo pom.xml añadimos esto:
+
+<!-- Plugin para desplegar en Tomcat -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url> <!-- URL del Tomcat Manager -->
+                    <server>TomcatServer</server>  <!-- Nombre del servidor (debe estar en settings.xml) -->
+                    <path>/Spring_MVC_3</path>     <!-- Ruta en la que se desplegará tu aplicación -->
+          <!--  <username>admin</username>  -->   <!-- Usuario del Tomcat Manager -->
+          <!--    <password>admin</password> -->     <!-- Contraseña del Tomcat Manager -->
+                </configuration>
+            </plugin>
+     
+3 - Ahi tenemos la opcion de poner el el usuario y contraseña aqui, auqnue es menos seguro, lo mejor es ponerla directamente
+en nuestros archivos de Linux, en concreto en la carpeta '~/.m2/settings.xml' (sino la creamos) y ponemos:
+
+<settings>
+    <servers>
+        <server>
+            <id>TomcatServer</id>  <!-- Este ID debe coincidir con el que uses en el pom.xml -->
+            <username>admin</username>  <!-- Tu usuario de Tomcat Manager -->
+            <password>admin</password>  <!-- Tu contraseña de Tomcat Manager -->
+        </server>
+    </servers>
+</settings>
+
+4- Una vez esto podemos proceder a lanzar Tomcat como se indica al principio del todo.
+
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
