@@ -5,7 +5,12 @@
     <title>Mi Proyecto</title>
 </head>
 <body>
-    <h1>¡Hola, Mundo!</h1>
+    <h1>¡Holaaaaa, Mundo!</h1>
     <p>Esta es la página de inicio de mi aplicación.</p>
+<a href="principal/muestraFormulario">Ir al formulario.</a>
+	<br><br><br>
+	<a href="alumno/muestraFormulario">Ir al formulario del registro de alumnos.</a>
+	
+
 </body>
 </html>

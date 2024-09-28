@@ -3,12 +3,14 @@ Si no te acuerdas de como va esta movida, pasa abajo a donde pone Consideracione
 
 **** Apagar y encender Tomcat9 ****
 **********************************
-sudo /opt/tomcat9/bin/shutdown.sh
+sudo rm -rf /opt/tomcat9/work/*
+sudo rm -rf /opt/tomcat9/temp/*
+sudo /opt/tomcat9/bin/shutdown.sh  (o sin sudo)
 sudo /opt/tomcat9/bin/startup.sh
 
 ***** comando de Maven para desplegar tu aplicación ****
 *********************************************************
-mvn tomcat7:deploy
+mvn tomcat7:deploy && /opt/tomcat9/scripts/post-deploy.sh (si exite este script q da permisos especiales)
 
 ***** URL donde has desplegado tu aplicación (ejemplo de carpeta) ******
 ************************************************************************
@@ -26,6 +28,12 @@ mvn tomcat7:undeploy
 **** Ver los logs en tiempo real para identificar cualquier posible error o advertencia en Tomcat ****
 ******************************************************************************************************
 sudo tail -f /opt/tomcat9/logs/catalina.out
+sudo grep "Exception" /opt/tomcat9/logs/catalina.out ------ solo para ver las excepciones ------
+
+********** Para ver los permisos de los directorios ************
+****************************************************************
+ls -l /opt/tomcat9/webapps/
+ls -l /home/david/Documents/GitHub/Spring_Java/Spring_MVC_3/target
 
 
 ------------------------------------------------------------------------------------------------------------------------

@@ -17,6 +17,9 @@
 </head>
 <body>
 
+  <!--Creamos un formulario con las jsp tags -->
+  <!-- ************************************* -->
+
 	<form:form action="procesarFormulario" modelAttribute="elAlumno"> <!-- elAlumno es el identificador que le hemos dado en AlumnoController -->
 	
 	Nombre: <form:input path="nombre"/> <!-- viene de getNombre,aqui n en minuscula y sin get o set -->

@@ -14,6 +14,7 @@
 	<!--  paquete a escanear en busca de componentes -->
 	<context:component-scan base-package="es.pildoras.spring.mvc" />
 
+	<!--  Para que busque anotaciones en nuestros archivos -->
 	<mvc:annotation-driven/>
 
 	<!-- Configuracion del view resolver, asi encuentra las vistas de jsp-->

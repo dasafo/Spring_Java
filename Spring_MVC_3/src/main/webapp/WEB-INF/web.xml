@@ -20,7 +20,12 @@
     <!-- Mapeo del DispatcherServlet -->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/</url-pattern> <!-- Esto asegura que el Dispatcher maneje todas las URL -->
+    </servlet-mapping>
+<!-- Mapeo explícito para la ruta /Spring_MVC_3/saludo -->
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/Spring_MVC_3/saludo</url-pattern> <!-- Captura específicamente la ruta saludo -->
     </servlet-mapping>
 
 </web-app>

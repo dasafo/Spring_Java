@@ -37,9 +37,9 @@ public class AlumnoController {
 	//metodo para que nos muestre el formulario de registro(nombre,apellido,boton-enviar)
 	//dichos datos seran almacenados en un objeto de topo alumno(Alumno.java)
 	@RequestMapping("/muestraFormulario")
-	public String muestraFormulario(Model modelo) {
+	public String muestraFormulario(Model modelo) { //recordar q el modelo es el puente entre el controlador y las vistas
 		
-		Alumno elAlumno = new Alumno();
+		Alumno elAlumno = new Alumno(); //creamos el objeto
 		
 		//guardamos dentro del modelo model, el objeto que queremos que viaje 
 		// entre el formulario de registro y la vista de confirmacion

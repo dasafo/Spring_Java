@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HolaMundoController {
-
+    
     @RequestMapping("/saludo")
     public String muestraSaludo(Model model) {
+        
+        
         // Agregamos un atributo al modelo que será accesible en la vista
         model.addAttribute("mensaje", "¡Hola, Mundo desde Spring MVC!");
 

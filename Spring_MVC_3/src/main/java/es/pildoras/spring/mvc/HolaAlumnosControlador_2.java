@@ -47,7 +47,8 @@ public class HolaAlumnosControlador_2 {
 		
 		//Agregar info al modelo
 		modelo.addAttribute("mensajeClaro", mensajeFinal);
-		
+	  //	luego llamamos a mensajeFinal en HolaAlumnosSpring.jsp
+    
 		return "HolaAlumnosSpring"; //nombre pagina jsp que devolvera
 	}
 

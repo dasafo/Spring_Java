@@ -1,0 +1,62 @@
+Spring_MVC_3/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── es/
+│   │   │       └── pildoras/
+│   │   │           └── spring/
+│   │   │               └── mvc/
+│   │   │                   ├── AlumnoController.java
+│   │   │                   ├── Alumno.java
+│   │   │                   ├── Controlador_1.java
+│   │   │                   ├── HolaAlumnosControlador_2.java
+│   │   │                   └── validacionespersonalizadas/
+│   │   │                       ├── CPostalMadrid.java
+│   │   │                       └── CPostalMadridValidacion.java
+│   │   └── resources/
+│   │       └── messages.properties       # Archivo de propiedades para mensajes
+│   └── main/
+│       └── webapp/
+│           ├── META-INF/
+│           │   └── MANIFEST.MF
+│           ├── recursos/
+│           │   ├── estilos/
+│           │   │   └── miestilo.css      # Archivos CSS
+│           │   └── imgs/
+│           │       ├── cosmos.jpeg       # Imágenes
+│           │       └── fondo.jpg
+│           ├── WEB-INF/
+│           │   ├── lib/                  # Dependencias manuales si necesitas alguna
+│           │   ├── spring_mvc_servlet.xml # Archivo de configuración Spring
+│           │   └── web.xml               # Archivo de configuración web
+│           └── vista/
+│               ├── alumnoRegistroFormulario.jsp
+│               ├── confirmacionRegistroAlumno.jsp
+│               ├── HolaAlumnosFormulario.jsp
+│               ├── HolaAlumnosSpring.jsp
+│               └── paginaEjemplo.jsp
+├── src/test/
+│   └── java/
+│       └── es/
+│           └── pildoras/
+│               └── spring/
+│                   └── mvc/
+│                       └── (clases de prueba)  # Pruebas unitarias aquí
+├── pom.xml                                  # Archivo de configuración Maven
+└── target/                                  # Carpeta generada después de compilar
+    ├── classes/                             # Archivos .class y recursos compilados
+    │   ├── es/
+    │   │   └── pildoras/
+    │   │       └── spring/
+    │   │           └── mvc/
+    │   │               ├── Alumno.class
+    │   │               ├── AlumnoController.class
+    │   │               ├── Controlador_1.class
+    │   │               ├── HolaAlumnosControlador_2.class
+    │   │               └── validacionespersonalizadas/
+    │   │                   ├── CPostalMadrid.class
+    │   │                   └── CPostalMadridValidacion.class
+    │   └── messages.properties             # Archivo de propiedades copiado por Maven
+    ├── test-classes/                       # Clases compiladas de las pruebas
+    └── Spring_MVC_3.war                    # Archivo WAR generado para Tomcat
+
