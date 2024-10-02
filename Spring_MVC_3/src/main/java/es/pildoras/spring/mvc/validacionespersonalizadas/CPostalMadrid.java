@@ -19,6 +19,7 @@ public @interface CPostalMadrid {
 	public String message() default "El CP debe comenzar por 28!!";
 	
 	//Definimos los grupos, para que valide el formulario paso a paso(o por grupos), no todo a la vez
+  //cada casilla q se rellena se valida.
 	Class<?>[] groups() default {};
 	
 	//Definimos los Payloads, que contiene los datos que pueden ser almacenados(metadatos)

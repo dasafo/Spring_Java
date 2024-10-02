@@ -54,7 +54,7 @@
 	</form:select>
 	
 	<br/><br/><br/>
-	
+  <!-- Al nombrar a todos con el mismo path nos aseguramos que solo puedas seleccionar uno -->	
 		Barcelona<form:radiobutton path="ciudadEstudios" value="Barcelona"/><!-- llamara a getCiudadEstudios de Alumno.java-->
 		Zaragoza<form:radiobutton path="ciudadEstudios" value="Zaragoza"/>
 		Tenerife<form:radiobutton path="ciudadEstudios" value="Tenerife"/>

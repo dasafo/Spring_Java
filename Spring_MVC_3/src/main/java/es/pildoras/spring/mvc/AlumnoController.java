@@ -50,8 +50,9 @@ public class AlumnoController {
 	
 	//Metodo que nos muestre la pagina de confimacion de la vista de Alumno Confirmado
 	//Para ello llamamos al objeto creado llamado "elAlumno" con @ModelAttribute y lo guardamos
-	// en un objeto de tipo Alumno llamado el Alumno
+	// en un objeto de tipo Alumno llamado elAlumno
 	//También metemos como argumento un BindingResult para la validacion de los formularios y el @Valid
+  //para indicar q estamos usando validacion
 	@RequestMapping("/procesarFormulario")
 	public String procesarFormulario(@Valid @ModelAttribute("elAlumno") Alumno elAlumno,
 			BindingResult resultadoValidacion) {
