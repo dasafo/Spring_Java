@@ -1,61 +1,42 @@
-package es.pildoras.conexionHibernate;
+package es.pildoras.spring.mvc.conexionHibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-// Ver BBDD_InsertarRegirstro.png
-
+@Component
 public class GuardaClientePrueba {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		// 1. Crear SessionFactory
-		SessionFactory miFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes.class).buildSessionFactory();
+    @Autowired
+    private SessionFactory sessionFactory;
 
-		// 2. Crear Objeto Session
-		Session miSession = miFactory.openSession();
-		
-		try {
-		
-		// 3. Crear Objeto Clientes
-			Clientes cliente1 = new Clientes("Alina", "Salas", "Leipzig");
-		
-		// 4. Ejecutamos la transaccion SQL
-			miSession.beginTransaction();
-			
-		// 5. Comenzamos la transacción
-			miSession.save(cliente1);
-			
-		// 6. Guardar Objeto en la BBDD
-			miSession.getTransaction().commit();
-			
-			System.out.println("Registro insertado correctamente en la BBDD!!");
-			
-		// Lectura de Registro ID
-			miSession.beginTransaction(); //ejecutamos una nueva transaccion porque con el commit anterior ya habia terminado
-			System.out.println("Lectura del registro con Id: " + cliente1.getId());
-			
-		// Lectura de todos los campos del cliente insertado
-			Clientes clienteInsertado = miSession.get(Clientes.class, cliente1.getId());
-			
-			System.out.println("Registro: " + clienteInsertado);
-			
-			miSession.getTransaction().commit();
+    @Transactional
+    public void guardarCliente() {
+        // Obtener la sesión actual
+        Session miSession = sessionFactory.getCurrentSession();
 
-			System.out.println("Terminado!!");
-			
-			
-			
-			miSession.close(); //cerramos la session
-			
-			
-		}finally{
-			
-			miFactory.close(); //cerramos la SessionFactory
-		}
-		
-	}
+        try {
+            // 1. Crear Objeto Clientes
+            Clientes cliente1 = new Clientes("Alina", "Salas", "Leipzig");
 
+            // 2. Guardar el objeto en la BBDD
+            miSession.save(cliente1);
+
+            System.out.println("Registro insertado correctamente en la BBDD!!");
+
+            // 3. Lectura de Registro ID
+            System.out.println("Lectura del registro con Id: " + cliente1.getId());
+
+            // 4. Lectura de todos los campos del cliente insertado
+            Clientes clienteInsertado = miSession.get(Clientes.class, cliente1.getId());
+
+            System.out.println("Registro: " + clienteInsertado);
+
+            System.out.println("Terminado!!");
+        } finally {
+            // No se necesita cerrar la sesión manualmente, ya que Spring lo gestiona.
+        }
+    }
 }

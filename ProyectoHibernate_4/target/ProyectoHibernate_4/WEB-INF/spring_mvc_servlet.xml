@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!--  paquete a escanear en busca de componentes -->
+	<context:component-scan base-package="es.pildoras.spring.mvc" />
+
+	<!--  Para que busque anotaciones en nuestros archivos -->
+	<mvc:annotation-driven/>
+
+	<!-- Configuracion del view resolver, asi encuentra las vistas de jsp-->
+  
+  	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    		<property name="prefix" value="/WEB-INF/vista/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- Configuración del DataSource para PostgreSQL -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/pruebashibernate?ssl=false" />
+        <property name="username" value="pildoras" />
+        <property name="password" value="freedom85" />
+    </bean>
+    
+	<!-- Configuración del SessionFactory de Hibernate -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="es.pildoras.spring.mvc.conexionHibernate" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Configuración del TransactionManager para manejar las transacciones -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Habilitar soporte para @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Indicamos donde se encuentran la carpeta de recursos externos -->
+  
+  <mvc:resources location="/recursos/" mapping="/recursos/**"></mvc:resources>
+	
+	<!-- Indicamos donde se encuentra el archivo para los mensajes de errores no declarados -->
+  
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basenames" value="messages"></property>
+	
+	</bean>
+
+</beans>
+
+
+
+
+

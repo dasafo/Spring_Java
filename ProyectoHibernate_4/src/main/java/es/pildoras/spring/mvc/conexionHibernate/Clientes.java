@@ -1,4 +1,4 @@
-package es.pildoras.conexionHibernate;
+package es.pildoras.spring.mvc.conexionHibernate;
 
 import javax.persistence.*;
 

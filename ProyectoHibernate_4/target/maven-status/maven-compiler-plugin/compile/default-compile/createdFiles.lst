@@ -1,0 +1,5 @@
+es/pildoras/spring/mvc/conexionHibernate/ActualizaBorraClientes.class
+es/pildoras/spring/mvc/conexionHibernate/ConsultaClientes.class
+es/pildoras/spring/mvc/conexionHibernate/GuardaClientePrueba.class
+es/pildoras/spring/mvc/conexionHibernate/Clientes.class
+es/pildoras/spring/mvc/pruebasHibernate/PruebasJDBC.class

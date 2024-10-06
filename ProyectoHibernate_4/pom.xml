@@ -39,17 +39,23 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-        
+
+        <!-- Dependencia para la gestion de transacciones en Spring -->
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-tx</artifactId>
+          <version>6.0.0</version>
+        </dependency>
+
+
         <!-- Dependencia para PostgreSQL -->
         <dependency>
-	    <groupId>org.postgresql</groupId>
-	    <artifactId>postgresql</artifactId>
-	    <version>42.2.20</version> <!-- Verifica si hay una versión más reciente disponible -->
-	</dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.20</version>
+        </dependency>
 
         <!-- Hibernate Validator (implementación de javax.validation) -->
-    <!-- En este poryecto las usamos para validar los formularios, comporbar que
-    todo esta ok a la hora de introducri los datos -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -70,23 +76,33 @@
             <version>3.0.0</version>
         </dependency>
 
-        <!-- Otras dependencias necesarias para tu proyecto pueden ir aquí -->
+        <!-- Dependencia para JPA -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <!-- Dependencia de Hibernate Core (esencial para Hibernate ORM) -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.0.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>ProyectoHibernate_4</finalName>
-        
-        
-        <!-- Configuración del plugin para que MAven incluya todos los .xml que se encuentren
-        en una carpeta determinada -->
+
         <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>**/*.xml</include>
-            </includes>
-        </resource>
-    </resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
 
         <plugins>
             <!-- Configuración del plugin de compilador Maven -->
@@ -119,12 +135,11 @@
                     <url>http://localhost:8080/manager/text</url> <!-- URL del Tomcat Manager -->
                     <server>TomcatServer</server>  <!-- Nombre del servidor (debe estar en settings.xml) -->
                     <path>/ProyectoHibernate_4</path>     <!-- Ruta en la que se desplegará tu aplicación -->
-          <!--  <username>admin</username>  -->   <!-- Usuario del Tomcat Manager -->
-          <!--    <password>admin</password> -->     <!-- Contraseña del Tomcat Manager -->
+                    <!--  <username>admin</username> -->   <!-- Usuario del Tomcat Manager -->
+                    <!--  <password>admin</password> -->     <!-- Contraseña del Tomcat Manager -->
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
-
 </project>
